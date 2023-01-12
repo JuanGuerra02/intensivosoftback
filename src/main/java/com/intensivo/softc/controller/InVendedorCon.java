@@ -7,9 +7,5 @@ import java.util.List;
 
 public interface InVendedorCon {
 
-    public void update(Vendedor v) throws ConException;
 
-    public void delete(Vendedor v)throws ConException;
-
-    public List<Vendedor> selectall( )throws ConException;
 }

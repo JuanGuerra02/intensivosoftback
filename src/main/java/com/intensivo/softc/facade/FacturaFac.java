@@ -1,25 +1,24 @@
 package com.intensivo.softc.facade;
 
 import com.intensivo.softc.database.Managerconexion;
+import com.intensivo.softc.dto.Factura;
 import com.intensivo.softc.dto.Precio;
-import com.intensivo.softc.dto.Producto;
 import com.intensivo.softc.exception.FacException;
+import com.intensivo.softc.mgr.InFacturaMgr;
 import com.intensivo.softc.mgr.InPrecioMgr;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Component
-public class PrecioFac implements InPrecioFa{
+public class FacturaFac implements InFacturaFac{
 
     @Autowired
-    private InPrecioMgr precioMgr;
+    private InFacturaMgr facturaMgr;
 
-    public void insert(Precio p) throws FacException{
+    public void insert(Factura f) throws FacException {
         try {
             Managerconexion.getInstance().open();
-            precioMgr.insert(p);
+            facturaMgr.insert(f);
             Managerconexion.getInstance().commit();
         }catch (Exception ex){
             Managerconexion.getInstance().rollback();
@@ -28,10 +27,10 @@ public class PrecioFac implements InPrecioFa{
             Managerconexion.getInstance().close();
         }
     }
-    public void delete(Precio p) throws FacException {
+    public void delete(Factura f) throws FacException {
         try {
             Managerconexion.getInstance().open();
-            precioMgr.delete(p);
+            facturaMgr.delete(f);
             Managerconexion.getInstance().commit();
         } catch (Exception ex) {
             Managerconexion.getInstance().rollback();
@@ -41,10 +40,10 @@ public class PrecioFac implements InPrecioFa{
         }
     }
 
-    public List<Precio> selectall() throws FacException {
+    public List<Factura> selectall() throws FacException {
         Managerconexion.getInstance().open();
         try {
-            return precioMgr.selectall();
+            return facturaMgr.selectall();
         } catch (Exception ex) {
             throw new FacException(ex);
         } finally {

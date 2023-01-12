@@ -5,20 +5,22 @@ import com.intensivo.softc.dto.Vendedor;
 import com.intensivo.softc.exception.FacException;
 import com.intensivo.softc.mgr.InVendedorMgr;
 import com.intensivo.softc.mgr.VendedorMgr;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 
 import java.util.List;
-
+@Component
 public class VendedorFac implements InVendedorFac{
 
-
+    @Autowired
     private InVendedorMgr vmgr;
-
+    /*
     public VendedorFac() {
 
         this.vmgr = new VendedorMgr();
     }
-
+    */
     public void save (Vendedor v)throws FacException {
         try {
             Managerconexion.getInstance().open();

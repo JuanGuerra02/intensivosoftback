@@ -1,8 +1,7 @@
 package com.intensivo.softc.mgr;
 
-import com.intensivo.softc.dao.InPrecioDao;
-import com.intensivo.softc.dto.Precio;
-import com.intensivo.softc.dto.Producto;
+import com.intensivo.softc.dao.InFacturaDao;
+import com.intensivo.softc.dto.Factura;
 import com.intensivo.softc.exception.MgrException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -10,38 +9,40 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public class PrecioMgr implements InPrecioMgr {
-    @Autowired
-    private InPrecioDao preciodao;
+public class FacturaMgr implements InFacturaMgr {
 
-    public void  insert(Precio p) throws MgrException{
+    @Autowired
+    private InFacturaDao facturaDao  ;
+
+
+    public void  insert(Factura f) throws MgrException {
 
         try {
-            Precio ip= preciodao.selectbyid(p);
+            Factura ip= facturaDao.selectbyid(f);
             if (ip == null){
-                preciodao.insert(p);
+                facturaDao.insert(f);
             }else {
-                preciodao.update(p);
+                facturaDao.update(f);
             }
         }catch (Exception e){
             throw new MgrException(e);
         }
     }
 
-    public void delete(Precio p) throws MgrException {
+    public void delete(Factura f) throws MgrException {
         try {
-            Precio dp = preciodao.selectbyid(p);
+            Factura dp = facturaDao.selectbyid(f);
             if (dp != null) {
-                preciodao.delete(p);
+                facturaDao.delete(f);
             }
         } catch (Exception ex) {
             throw new MgrException(ex);
         }
     }
 
-    public List<Precio> selectall() throws MgrException {
+    public List<Factura> selectall() throws MgrException {
         try {
-            return preciodao.selectall();
+            return facturaDao.selectall();
         } catch (Exception ex) {
             throw new MgrException(ex);
         }

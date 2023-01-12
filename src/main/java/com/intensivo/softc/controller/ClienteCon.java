@@ -1,6 +1,5 @@
 package com.intensivo.softc.controller;
 
-import ch.qos.logback.core.net.server.Client;
 import com.intensivo.softc.dto.Cliente;
 import com.intensivo.softc.dto.Mensaje;
 import com.intensivo.softc.exception.ConException;
