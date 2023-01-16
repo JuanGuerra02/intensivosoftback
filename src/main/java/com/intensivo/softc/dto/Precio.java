@@ -5,23 +5,21 @@ import java.sql.Date;
 
 public class Precio {
     private int nmprecio;
-    private Producto sku;
+    private Producto psku;
     private double precio;
     private Date fedesde;
     private Date fehasta;
 
 
-    public Producto getPsku() {return sku;}
-    public void setPsku(Producto sku) {this.sku = sku;}
+    public Producto getPsku() {return psku;}
+    public void setPsku(Producto psku) {this.psku = psku;}
     public int getNmprecio() {
         return nmprecio;
     }
     public void setNmprecio(int nmprecio) {
         this.nmprecio = nmprecio;
     }
-    public double getPrecio() {
-        return precio;
-    }
+    public double getPrecio() {return precio;}
     public void setPrecio(double precio) {
         this.precio = precio;
     }

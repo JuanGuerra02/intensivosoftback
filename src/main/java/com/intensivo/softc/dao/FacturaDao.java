@@ -40,7 +40,7 @@ public class FacturaDao implements InFacturaDao {
 
 
     public void update(Factura facturadto) throws DaoException {
-        String UPDATE = "UPDATE factura SET cdfactura=?, fefactura=?, nmvendedor=?, nmcliente=? where nmfactura";
+        String UPDATE = "UPDATE factura SET cdfactura=?, fefactura=?, nmvendedor=?, nmcliente=? where nmfactura=?";
         PreparedStatement statement = null;
         Connection connection = Managerconexion.getInstance().getConnection();
         try {
@@ -64,7 +64,7 @@ public class FacturaDao implements InFacturaDao {
 
 
     public void delete(Factura facturadto) throws DaoException {
-        String DELETE = "DELETE FROM  factura where nmfactura =?)";
+        String DELETE = "DELETE FROM  factura where nmfactura=?";
         PreparedStatement statement = null;
         Connection connection = Managerconexion.getInstance().getConnection();
         try {

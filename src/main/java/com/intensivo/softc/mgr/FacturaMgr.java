@@ -18,8 +18,8 @@ public class FacturaMgr implements InFacturaMgr {
     public void  insert(Factura f) throws MgrException {
 
         try {
-            Factura ip= facturaDao.selectbyid(f);
-            if (ip == null){
+            Factura id= facturaDao.selectbyid(f);
+            if (id == null){
                 facturaDao.insert(f);
             }else {
                 facturaDao.update(f);
@@ -31,8 +31,8 @@ public class FacturaMgr implements InFacturaMgr {
 
     public void delete(Factura f) throws MgrException {
         try {
-            Factura dp = facturaDao.selectbyid(f);
-            if (dp != null) {
+            Factura id = facturaDao.selectbyid(f);
+            if (id != null) {
                 facturaDao.delete(f);
             }
         } catch (Exception ex) {

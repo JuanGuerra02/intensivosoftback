@@ -1,36 +1,39 @@
 package com.intensivo.softc.facade;
 
 import com.intensivo.softc.database.Managerconexion;
+import com.intensivo.softc.dto.DetalleFactura;
 import com.intensivo.softc.dto.Factura;
 import com.intensivo.softc.exception.FacException;
-import com.intensivo.softc.mgr.InFacturaMgr;
+import com.intensivo.softc.mgr.InDetalleFacturaMgr;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Component
-public class FacturaFac implements InFacturaFac{
+public class DetalleFacturaFac implements InDetalleFacturaFac{
 
     @Autowired
-    private InFacturaMgr facturaMgr;
+    private InDetalleFacturaMgr Dfacturamgr;
 
-    public void insert(Factura f) throws FacException {
+    public void insert(DetalleFactura d) throws FacException{
+
         try {
             Managerconexion.getInstance().open();
-            facturaMgr.insert(f);
+            Dfacturamgr.insert(d);
             Managerconexion.getInstance().commit();
         }catch (Exception ex){
-            Managerconexion.getInstance().rollback();
+            Managerconexion.getInstance().close();
             throw new FacException(ex);
         }finally {
             Managerconexion.getInstance().close();
         }
     }
-    public void delete(Factura f) throws FacException {
+
+    public void delete(DetalleFactura d) throws FacException {
         try {
             Managerconexion.getInstance().open();
-            facturaMgr.delete(f);
+            Dfacturamgr.delete(d);
             Managerconexion.getInstance().commit();
         } catch (Exception ex) {
             Managerconexion.getInstance().rollback();
@@ -40,10 +43,10 @@ public class FacturaFac implements InFacturaFac{
         }
     }
 
-    public List<Factura> selectall() throws FacException {
+    public List<DetalleFactura> selectall() throws FacException {
         Managerconexion.getInstance().open();
         try {
-            return facturaMgr.selectall();
+            return Dfacturamgr.selectall();
         } catch (Exception ex) {
             throw new FacException(ex);
         } finally {

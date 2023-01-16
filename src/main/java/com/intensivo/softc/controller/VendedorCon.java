@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
-public class VendedorCon implements InVendedorCon{
+public class VendedorCon {
     @Autowired
     private InVendedorFac vfac;
     @PostMapping("/vendedor/save")

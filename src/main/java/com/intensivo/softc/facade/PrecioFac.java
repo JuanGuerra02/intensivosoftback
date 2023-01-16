@@ -2,7 +2,6 @@ package com.intensivo.softc.facade;
 
 import com.intensivo.softc.database.Managerconexion;
 import com.intensivo.softc.dto.Precio;
-import com.intensivo.softc.dto.Producto;
 import com.intensivo.softc.exception.FacException;
 import com.intensivo.softc.mgr.InPrecioMgr;
 import org.springframework.beans.factory.annotation.Autowired;
